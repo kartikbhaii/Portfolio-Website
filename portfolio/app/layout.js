@@ -20,9 +20,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${outfit.className} ${ovo.className} h-full antialiased`}
+      className="scroll-smooth"
     >
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body 
+      className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden`}>{children}</body>
     </html>
   );
 }

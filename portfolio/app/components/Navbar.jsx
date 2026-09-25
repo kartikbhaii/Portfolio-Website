@@ -1,47 +1,59 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
-
-    const sideMenuRef = useRef()
+    const [isScroll, setIsScroll] = useState(false);
+    const sideMenuRef = useRef();
 
     const openMenu = () =>{
-        sideMenuRef.current.style.transform = 'translateX(-16rem) '
+        sideMenuRef.current.style.transform = 'translateX(-16rem) ';
     }
 
     const closeMenu = () => {
-        sideMenuRef.current.style.transform = 'translate(16rem)'
+        sideMenuRef.current.style.transform = 'translate(16rem)';
     }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScroll(true);
+            } else {
+                setIsScroll(false);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     
   return (
     <>
-      <div className="fixed top-0 right-0 w-11/12 h-24 z-40 overflow-hidden pointer-events-none">
+      <div className="fixed top-0 right-0 w-full -z-10 pointer-events-none">
         <Image
           src={assets.header_bg_color}
           alt=""
-          loading="eager"
-          className="w-full h-full object-cover"
+          priority
+          className="w-full"
         />
       </div>
 
-      <nav className="w-full fixed px-5 lg:px-8 xl:px-[8%] flex items-center justify-between z-50 mt-2">
+      <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition duration-500 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm" : ""}`}>
         <a href="">
           <Image
             src={assets.logo}
             alt="logo"
-            className="w-28 cursor-pointer mr-14"
+            className="w-50 cursor-pointer mr-14"
           />
         </a>
 
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white bg-opacity-50 shadow-sm">
+        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 whitespace-nowrap transition duration-500 ${isScroll ? "" : "bg-white/50 shadow-sm backdrop-blur-md"}`}>
           <li>
             <a className="font-ovo" href="#top">
               Home
             </a>
           </li>
           <li>
-            <a className="font-ovo" href="about">
+            <a className="font-ovo" href="#about">
               About me
             </a>
           </li>
@@ -104,7 +116,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMenu} href="about">
+            <a className="font-ovo" onClick={closeMenu} href="#about">
               About me
             </a>
           </li>
