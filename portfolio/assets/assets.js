@@ -36,6 +36,26 @@ import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
 
+
+
+import bootstrap from "./icons8-bootstrap-96.png";
+import express from "./icons8-express-js-96.png"
+import github from "./icons8-github-90.png"
+import html from "./icons8-html-5-96.png"
+import javascript from "./icons8-javascript-96.png"
+import nextjs from "./icons8-nextjs-96.png"
+import react from "./icons8-react-96.png"
+import restapi from "./icons8-rest-api-96.png"
+import sql from "./icons8-sql-96.png"
+import tailwindcss from "./icons8-tailwindcss-96.png"
+import vercel from "./icons8-vercel-100.png"
+import postman from "./Postman.png"
+import css from "./CSS3.png"
+import node from "./icons8-nodejs-96.png"
+import cpp from "./icons8-c-96.png"
+import typescript from "./icons8-typescript-96.png"
+
+
 export const assets = {
   user_image,
   code_icon,
@@ -74,6 +94,22 @@ export const assets = {
   send_icon,
   right_arrow_bold,
   right_arrow_bold_dark,
+  bootstrap,
+  express,
+  github,
+  html,
+  javascript,
+  nextjs,
+  react,
+  restapi,
+  sql,
+  tailwindcss,
+  vercel,
+  postman,
+  css,
+  node,
+  cpp,
+  typescript,
 };
 
 export const workData = [
@@ -150,9 +186,23 @@ export const infoList = [
 ];
 
 export const toolsData = [
-  assets.vscode,
-  assets.firebase,
+  assets.react,
+  assets.tailwindcss,
+  assets.nextjs,
+  assets.javascript,
+  assets.html,
+  assets.typescript,
+  assets.css,
+  assets.bootstrap,
+  assets.node,
+  assets.express,
+  assets.restapi,
+  assets.cpp,
+  assets.sql,
   assets.mongodb,
-  assets.figma,
+  assets.vercel,
   assets.git,
+  assets.github,
+  assets.postman,
+  assets.vscode,
 ];
