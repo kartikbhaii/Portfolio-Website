@@ -40,7 +40,7 @@ const Header = () => {
           />
         </a>
         <a
-          href="/sample-resume.pdf"
+          href="/kartikey-resume.pdf"
           className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
         >
           My Resume
