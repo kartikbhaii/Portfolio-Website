@@ -15,7 +15,7 @@ const Header = () => {
 
       <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-ovo">
         Hi! I&apos;m Kartikey Singh{" "}
-        <Image src={assets.hand_icon} alt="my-image" className="w-6" />{" "}
+        <Image src={assets.hand_icon} alt="my-image" className="w-6 mb-1" />{" "}
       </h3>
 
       <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-ovo">

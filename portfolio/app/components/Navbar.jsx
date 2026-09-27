@@ -2,33 +2,33 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-const Navbar = () => {
-    const [isScroll, setIsScroll] = useState(false);
-    const sideMenuRef = useRef();
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+  const [isScroll, setIsScroll] = useState(false);
+  const sideMenuRef = useRef();
 
-    const openMenu = () =>{
-        sideMenuRef.current.style.transform = 'translateX(-16rem) ';
-    }
+  const openMenu = () => {
+    sideMenuRef.current.style.transform = "translateX(-16rem) ";
+  };
 
-    const closeMenu = () => {
-        sideMenuRef.current.style.transform = 'translate(16rem)';
-    }
+  const closeMenu = () => {
+    sideMenuRef.current.style.transform = "translate(16rem)";
+  };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScroll(true);
-            } else {
-                setIsScroll(false);
-            }
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-    
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <div className="fixed top-0 right-0 w-full -z-10 pointer-events-none">
+      <div className="fixed top-0 right-0 w-full -z-10 pointer-events-none dark:hidden">
         <Image
           src={assets.header_bg_color}
           alt=""
@@ -37,7 +37,9 @@ const Navbar = () => {
         />
       </div>
 
-      <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition duration-500 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm" : ""}`}>
+      <nav
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition duration-500 ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm" : ""}`}
+      >
         <a href="">
           <Image
             src={assets.logo}
@@ -46,7 +48,9 @@ const Navbar = () => {
           />
         </a>
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 whitespace-nowrap transition duration-500 ${isScroll ? "" : "bg-white/50 shadow-sm backdrop-blur-md"}`}>
+        <ul
+          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 whitespace-nowrap transition duration-500 ${isScroll ? "" : "bg-white/50 shadow-sm backdrop-blur-md"}`}
+        >
           <li>
             <a className="font-ovo" href="#top">
               Home
@@ -74,8 +78,12 @@ const Navbar = () => {
           </li>
         </ul>
         <div className="flex">
-          <button>
-            <Image src={assets.moon_icon} alt="" className="w-6 mr-2" />
+          <button onClick={() => setIsDarkMode((prev) => !prev)}>
+            <Image
+              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
+              alt=""
+              className="w-6 mr-2"
+            />
           </button>
 
           <a
@@ -91,18 +99,22 @@ const Navbar = () => {
           </a>
 
           <button className="block md:hidden ml-3">
-            <Image src={assets.menu_black} alt="" className="w-6"
-            onClick={openMenu} />
+            <Image
+              src={assets.menu_black}
+              alt=""
+              className="w-6"
+              onClick={openMenu}
+            />
           </button>
         </div>
 
         {/* {mobile menu} */}
 
-        <ul ref={sideMenuRef} className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500">
-
-          <div className="absolute right-6 top-6"
-          onClick={closeMenu}
-          > 
+        <ul
+          ref={sideMenuRef}
+          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500"
+        >
+          <div className="absolute right-6 top-6" onClick={closeMenu}>
             <Image
               src={assets.close_black}
               alt=""

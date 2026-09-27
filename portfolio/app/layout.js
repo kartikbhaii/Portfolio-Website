@@ -23,7 +23,8 @@ export default function RootLayout({ children }) {
       className="scroll-smooth"
     >
       <body 
-      className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden`}>{children}</body>
+      className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-dark-theme dark:text-white `}>{children}</body>
     </html>
   );
 }
+
