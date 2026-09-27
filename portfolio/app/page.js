@@ -12,19 +12,6 @@ export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-
-    queueMicrotask(() => {
-      setIsDarkMode(
-        savedTheme === "dark" || (savedTheme === null && prefersDark),
-      );
-    });
-  }, []);
-
-  useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
       localStorage.theme = "dark";
